@@ -117,4 +117,17 @@ def validate_fraud(document_data):
 document_data = result  # Usaria os dados extraídos anteriormente com o Form Recognizer
 validate_fraud(document_data)
 ```
+**Saída Esperada:**
+Aqui estão exemplos de saídas possíveis:
 
+Caso de Fraude Detectada:
+```
+Possível fraude detectada!
+Detalhes: {'valor_total': 45123.67, 'assinatura_coerente': False, 'datas_coerentes': True, 'selos_validos': False}
+Caso de Documento Autêntico:
+```
+
+Documento considerado autêntico.
+```
+Detalhes: {'valor_total': 24567.45, 'assinatura_coerente': True, 'datas_coerentes': True, 'se
+```
