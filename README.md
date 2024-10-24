@@ -62,3 +62,59 @@ def analyze_document(path):
 result = analyze_document(document_path)
 
 ```
+
+### 3. Simulação de um Modelo de Detecção de Fraudes
+
+Abaixo está um modelo fictício de detecção de fraudes que se baseia em características extraídas do documento:
+
+**Função para Simular Extração de Dados**
+```
+import random
+
+# Simulação da extração de dados de um documento após o uso do Form Recognizer
+def extract_features_from_document(document_data):
+    # Campos comuns em documentos, como valores monetários, datas, assinaturas, etc.
+    extracted_data = {
+        "valor_total": random.uniform(1000, 50000),  # valor do documento
+        "assinatura_coerente": random.choice([True, False]),  # assinatura válida ou não
+        "datas_coerentes": random.choice([True, False]),  # datas consistentes no documento
+        "selos_validos": random.choice([True, False]),  # se os selos/carimbos são válidos
+    }
+    return extracted_data
+```
+**Função de Detecção de Fraude**
+```
+# Função que simula a predição do modelo de fraude
+def fraud_detection_model(features):
+    # Regras simples para determinar fraude
+    if features["valor_total"] > 30000 and not features["assinatura_coerente"]:
+        return True
+    if not features["datas_coerentes"] or not features["selos_validos"]:
+        return True
+    return False
+```
+### 4. Validação do Documento
+Abaixo está a função que combina a extração de dados com o modelo de detecção de fraude:
+
+```
+# Função que valida se o documento possui indícios de fraude
+def validate_fraud(document_data):
+    # Extrair os recursos/características do documento
+    features = extract_features_from_document(document_data)
+    
+    # Simular a predição de fraude usando o modelo fictício
+    is_fraud = fraud_detection_model(features)
+    
+    # Exibir o resultado
+    if is_fraud:
+        print("Possível fraude detectada!")
+        print(f"Detalhes: {features}")
+    else:
+        print("Documento considerado autêntico.")
+        print(f"Detalhes: {features}")
+
+# Simular a análise de um documento
+document_data = result  # Usaria os dados extraídos anteriormente com o Form Recognizer
+validate_fraud(document_data)
+```
+
